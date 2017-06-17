@@ -20,7 +20,7 @@ from bokeh.models import NumeralTickFormatter
 
 import numpy as np
 import pandas as pd
-from sklearn.linear_model import LinearRegression
+#from sklearn.linear_model import LinearRegression
 
 ## Gets the data to be plotted in the bokeh plot.
 def get_data(symbl, parameter):
@@ -84,12 +84,12 @@ def create_bokeh_plot(symbl, name, parameter):
     ## Create simple linear regression model.
     df['ticks'] = range(0, len(df.index.values))
     X = df.drop(['close','date'], axis = 1)
-    regr = LinearRegression()
-    regr.fit(X, df['close'])
+#    regr = LinearRegression()
+#    regr.fit(X, df['close'])
     ## Creates the plot.
     plot.line(df['date'], df['close'], legend=parameter)
     plot.circle(df['date'], df['close'], legend=parameter)
-    plot.line(df['date'], regr.predict(X), legend='Fit', line_color = "red", line_dash="4 4")
+#    plot.line(df['date'], regr.predict(X), legend='Fit', line_color = "red", line_dash="4 4")
     plot.legend.location = 'top_left'
     plot.legend.orientation = 'horizontal'
     plot.legend.background_fill_alpha = 0.0
